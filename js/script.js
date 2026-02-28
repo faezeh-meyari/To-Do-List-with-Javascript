@@ -8,12 +8,14 @@ let todos = JSON.parse(localStorage.getItem("todo-list")); //String ➜ Object
 
 let editId;
 let isEditedTask = false;
+let currentFilter = "all";
 
 filters.forEach( btn => {
     btn.addEventListener("click", () => {
         document.querySelector("span.active").classList.remove("active");
         btn.classList.add("active");
-        showToDo(btn.id);
+        currentFilter = btn.id;
+        showToDo(currentFilter);
     });
 })
 
@@ -42,7 +44,7 @@ function showToDo(filter){
     });
     taskBox.innerHTML = li || `<span>You don't have any task here</span>`;
 }
-showToDo("all");
+showToDo(currentFilter);
 
 function showMenu(selectedTask){
     let taskMenu = selectedTask.parentElement.lastElementChild;
@@ -64,13 +66,13 @@ function editTask(taskId , taskName){
 function deleteTask(deleteId){
     todos.splice(deleteId,1);
     localStorage.setItem("todo-list" , JSON.stringify(todos));
-    showToDo("all");
+    showToDo(currentFilter);
 }
 
 clearAll.addEventListener("click", () => {
     todos.splice(0,todos.length);
     localStorage.setItem("todo-list" , JSON.stringify(todos));
-    showToDo("all");
+    showToDo(currentFilter);
 })
 
 
@@ -88,8 +90,8 @@ function updateStatus(selectedTask){
 
 taskInput.addEventListener("keyup" , (e) => {
     let userTask = taskInput.value.trim();
-    if (e.key === "Enter" && userTask){
-        if(!isEditedTask){ // if isEdited isn't true
+    if (e.key === "Enter" && userTask){ //&& userTask => If userTask isn't empty. So the user cannot store an empty task
+        if(!isEditedTask){  // if isEdited isn't true
             if(!todos){ //if todos isn't exist, pass an empty array to todos
                 todos=[];
             }
@@ -102,7 +104,7 @@ taskInput.addEventListener("keyup" , (e) => {
 
         taskInput.value="";
         localStorage.setItem("todo-list" , JSON.stringify(todos)); //Object ➜ String
-        showToDo("all");
+        showToDo(currentFilter);
     }
 });
 
