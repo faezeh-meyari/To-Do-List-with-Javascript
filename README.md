@@ -6,12 +6,10 @@ This project shows practical front-end development concepts including DOM manipu
 
 The application allows users to efficiently manage daily tasks with filtering, editing, and completion tracking features.
 
----
 
 ## Repository:
 https://github.com/faezeh-meyari/To-Do-List-with-Javascript
 
----
 
 ## Project Overview
 This project was created to improve my overall JavaScript skills and gain hands-on experience building interactive web applications.
@@ -27,7 +25,6 @@ Throughout the development process, I practiced:
 
 All task data is stored locally in the browser, meaning tasks remain saved even after refreshing the page.
 
----
 
 ## Features
 
@@ -43,7 +40,6 @@ All task data is stored locally in the browser, meaning tasks remain saved even 
 - Persistent data using LocalStorage
 - Dynamic UI updates without page reload
 
----
 
 ## Technologies Used
 
@@ -52,7 +48,6 @@ All task data is stored locally in the browser, meaning tasks remain saved even 
 - Javascript (ES6)
 - Localstorage API 
 
----
 
 ### Author
 
